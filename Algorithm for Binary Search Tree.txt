@@ -1,0 +1,58 @@
+ Algorithm for Binary Search Tree (BST)
+
+1. **Node Structure**:
+   - A node contains:
+     - `int data`: Value of the node
+     - `struct node* lchild`: Pointer to the left child
+     - `struct node* rchild`: Pointer to the right child
+
+ 1. Algorithm BST_Insertion(item)
+
+1. If `root == NULL` then:
+   1. Create a node `newNode`
+   2. Set `newNode->data = item`
+   3. Set `newNode->lchild = newNode->rchild = NULL`
+   4. Set `root = newNode`
+2. Else:
+   1. Set `ptr = root`
+   2. Set `parent = NULL`
+   3. Set `flag = 0`
+   4. While `ptr != NULL` and `flag == 0` do:
+      1. If `item == ptr->data` then:
+         1. Set `flag = 1`
+         2. Print "Item already exists"
+         3. Free `newNode` and exit
+      2. Else if `item < ptr->data` then:
+         1. Set `parent = ptr`
+         2. Set `ptr = ptr->lchild`
+      3. Else:
+         1. Set `parent = ptr`
+         2. Set `ptr = ptr->rchild`
+   5. If `ptr == NULL` then:
+      1. Create a node `newNode`
+      2. Set `newNode->data = item`
+      3. Set `newNode->lchild = newNode->rchild = NULL`
+      4. If `parent->data < item` then:
+         1. Set `parent->rchild = newNode`
+      5. Else:
+         1. Set `parent->lchild = newNode`
+
+ 2. Algorithm BST_Search(item)
+1. Set `ptr = root`
+2. Set `flag = 0`
+3. While `ptr != NULL` and `flag == 0` do:
+   1. If `ptr->data == item` then:
+      1. Set `flag = 1`
+   2. Else if `ptr->data < item` then:
+      1. Set `ptr = ptr->rchild`
+   3. Else:
+      1. Set `ptr = ptr->lchild`
+4. If `flag == 1` then:
+   1. Print "Search data found"
+5. Else:
+   1. Print "Search data not found"
+
+ 3. Traversal Algorithms
+- **Inorder Traversal**: Visit left child, current node, right child.
+- **Preorder Traversal**: Visit current node, left child, right child.
+- **Postorder Traversal**: Visit left child, right child, current node.

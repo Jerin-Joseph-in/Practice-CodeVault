@@ -1,0 +1,71 @@
+import java.util.*;
+class demo
+{
+    public static void main(String[] args)
+    {
+        app q= new app();
+        ball w = new ball();
+        thread1 t = new thread1(q);
+        thread2 t1 = new thread2(w);
+        t.start();
+        t1.start();
+
+        
+    }
+}
+
+
+
+
+class app
+{
+synchronized    public void even()
+    {
+        System.out.println("even");
+    for(int i=1;i<=100;i++)
+    {
+        if(i%2==0)
+        {
+            System.out.println(i);
+        }
+    }
+}
+}
+class ball
+{
+synchronized    public void odd()
+    {
+        System.out.println("odd");
+    for(int j=1;j<=100;j++)
+    {
+        if(j%2!=0)
+        {
+            System.out.println(j);
+        }
+    }
+}
+}
+ class thread1 extends Thread
+ {
+     app a;
+public     thread1(app a)
+     {
+         this.a=a;
+     }
+     public void run()
+     {
+      a.even();   
+     }
+ }
+ class thread2 extends Thread
+ {
+     ball b;
+public   thread2(ball b)
+     {
+         this.b=b;
+     }
+     public void run()
+     {
+      b.odd();   
+     }
+ }

@@ -1,0 +1,143 @@
+#include <stdio.h>
+int s[20],n,i,item;
+int front=-1;
+int rear=-1;
+int c,n;
+void insertrear(int item)
+{
+    if(rear==n-1)
+    {
+        printf("queue is full");
+        
+    }
+    else if(front==-1 && rear==-1)
+    {
+        front=0;
+        rear=0;
+        s[rear]=item;
+        
+    }
+    else
+    {
+        rear=rear+1;
+        s[rear]=item;
+    }
+}
+void deletefront()
+{
+    if(front==-1)
+    {
+        printf("queue is empty");
+    }
+    else if(front == rear)
+    {
+        front=-1;
+        rear=-1;
+    }
+    else
+    {
+        item = s[front];
+        front = front+1;
+    }
+}
+void insertfront(int item)
+{
+    if(front==0)
+    {
+        printf("insertion not possible");
+        
+    }
+    else if(front==-1 && rear==-1)
+    {
+        front=0;
+        rear=0;
+        s[rear]=item;
+        
+    }
+    else
+    {
+        front=front-1;
+        s[front]=item;
+    }
+}
+void deleterear()
+{
+if(front==-1)
+    {
+        printf("queue is empty");
+    }
+    else if(front == rear)
+    {
+        front=-1;
+        rear=-1;
+    }
+    else 
+    {
+        item=s[rear];
+        rear=rear-1;
+        
+    }
+}
+void display()
+{
+    if(front==-1)
+    {
+        printf("its empty");
+    }
+    else
+    {
+        for(i=front;i<=rear;i++)
+        {
+            printf("%d",s[i]);
+        }
+    }
+}
+int main() {
+    printf("Enter the size of the queue: ");
+    scanf("%d", &n);
+
+    do {
+        printf("1. Insert rear\n");
+        printf("2. Insert front\n");
+        printf("3. Delete front\n");
+        printf("4. Delete rear\n");
+        printf("5. Display\n");
+        printf("6. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &c);
+
+        switch (c) {
+            case 1:
+                printf("Enter the item: ");
+                scanf("%d", &item);
+                insertrear(item);
+                break;
+
+            case 2:
+                printf("Enter the item: ");
+                scanf("%d", &item);
+                insertfront(item);
+                break;
+
+            case 3:
+                deletefront();
+                break;
+
+            case 4:
+                deleterear();
+                break;
+
+            case 5:
+                display();
+                break;
+
+            case 6:
+                break;
+
+            default:
+                printf("Invalid choice\n");
+        }
+    } while (c != 6);
+
+    return 0;
+}

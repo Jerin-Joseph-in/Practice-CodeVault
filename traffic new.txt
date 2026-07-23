@@ -1,0 +1,103 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+class Traffic implements ActionListener {
+    
+    JFrame j;
+    JButton r, y, g;
+    JRadioButton start, stop, slow;
+    
+    Traffic() {
+        j = new JFrame("Traffic Signal");
+
+        // Create buttons for the traffic lights (Red, Yellow, Green)
+        r = new JButton();
+        y = new JButton();
+        g = new JButton();
+
+        // Create JRadioButtons for controls (Start, Stop, Slow)
+        start = new JRadioButton("Start");
+        stop = new JRadioButton("Stop");
+        slow = new JRadioButton("Slow");
+
+        // Set the position and size of the traffic lights buttons
+        r.setBounds(100, 50, 100, 100);  // Red light button
+        y.setBounds(100, 150, 100, 100); // Yellow light button
+        g.setBounds(100, 250, 100, 100); // Green light button
+
+        // Set the background color for each button
+        r.setBackground(Color.RED);
+        y.setBackground(Color.YELLOW);
+        g.setBackground(Color.GREEN);
+
+        // Make the buttons circular by setting the border and the round shape
+        r.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        y.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        g.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        // Set the content of the button to be circular by adjusting the shape
+        r.setFocusPainted(false);
+        y.setFocusPainted(false);
+        g.setFocusPainted(false);
+
+        // Set the layout manager for the JFrame (null layout to use setBounds)
+        j.setLayout(null);
+
+        // Set the action buttons' bounds
+        start.setBounds(100, 400, 100, 30);
+        stop.setBounds(100, 440, 100, 30);
+        slow.setBounds(100, 480, 100, 30);
+
+        // Add the action buttons to a group (so only one can be selected)
+        ButtonGroup group = new ButtonGroup();
+        group.add(start);
+        group.add(stop);
+        group.add(slow);
+
+        // Add components to the JFrame
+        j.add(r);
+        j.add(y);
+        j.add(g);
+        j.add(start);
+        j.add(stop);
+        j.add(slow);
+
+        // Set the initial visibility of the traffic light buttons
+        r.setVisible(false);
+        y.setVisible(false);
+        g.setVisible(false);
+
+        // Add action listeners for the radio buttons
+        start.addActionListener(this);
+        stop.addActionListener(this);
+        slow.addActionListener(this);
+
+        // Set JFrame properties
+        j.setSize(300, 600);
+        j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        j.setVisible(true);
+    }
+
+    // ActionListener method to handle the button clicks
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == start) {
+            r.setVisible(false);
+            y.setVisible(false);
+            g.setVisible(true);  // Show green light
+        } else if (e.getSource() == stop) {
+            r.setVisible(true);  // Show red light
+            y.setVisible(false);
+            g.setVisible(false);
+        } else if (e.getSource() == slow) {
+            r.setVisible(false);
+            y.setVisible(true);  // Show yellow light
+            g.setVisible(false);
+        }
+    }
+
+    public static void main(String[] args) {
+        new Traffic();  // Create and display the traffic light simulation
+    }
+}

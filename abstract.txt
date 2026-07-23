@@ -1,0 +1,51 @@
+import java.util.*;
+import java.io.*;
+class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner s= new Scanner(System.in);
+        System.out.println("eneter the name");
+        String n = s.nextLine();
+        System.out.println("eneter the age");
+        int a = s.nextInt();
+        System.out.println("eneter the salary");
+        int sa = s.nextInt();
+        System.out.println("eneter the bonud");
+        int b = s.nextInt();
+        P v = new P(b,sa,n,a);
+        v.details();
+    }
+}
+abstract class  employee
+{
+    abstract public  void calsalary();
+    abstract public void details();
+}
+class P extends employee
+{
+    int bonus;
+    int salary;
+    String name;
+    int age;
+    P(int bonus,int salary,String name,int age)
+    {
+        this.bonus=bonus;
+        this.salary=salary;
+        this.name=name;
+        this.age=age;
+    }
+  public   void calsalary()
+    {
+        int tsalary=bonus+salary;
+        System.out.println("the salary is "+tsalary);
+        
+    }
+  public   void details()
+    {
+        System.out.println("the name is "+name);
+        System.out.println("the age is"+age);
+        calsalary();
+    }
+    
+}

@@ -1,0 +1,57 @@
+#include <stdio.h>
+int a[30],low,high,n,i,j,temp,p;
+
+void quicksort(int a[], int low, int high);
+
+
+void quicksort(int a[],int low,int high)
+{
+    if(low<high)
+    {
+        i=low;
+        p=a[low];
+        j=high;
+    while(i<j)
+    {
+        while(p>=a[i] && i<=high)
+        {
+            i++;
+        }
+        
+        while(p<a[j] && j>low)
+        {
+            j--;
+        }
+        if(i<j)
+        {
+            temp=a[i];
+            a[i]=a[j];
+            a[j]=temp;
+        
+        }}
+        
+    
+    temp=a[low];
+    a[low]=a[j];
+    a[j]=temp;
+    quicksort(a,low,j-1);
+    quicksort(a,j+1,high);
+}
+}
+int main()
+{
+    printf("enter the size");
+    scanf("%d",&n);
+    printf("enter the elements");
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    quicksort(a,0,n-1);
+     printf(" the sorted array\n");
+    for(i=0;i<n;i++)
+    {
+        printf("%d\n \n",a[i]);
+    }
+    return 0;
+}

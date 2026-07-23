@@ -1,0 +1,80 @@
+#include<stdio.h>
+int i,j,k=0,n,m;
+struct poly
+{
+    int coef;
+    int expo;
+}p1[100],p2[10],p3[200];
+
+int main()
+{
+    printf("THE FIRST MATRIX");
+    printf("enter the size");
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        printf("enter the coefficient");
+        scanf("%d",&p1[i].coef);
+        printf("enter the expoenetial");
+        scanf("%d",&p1[i].expo);
+    }
+    printf("THE SECOND MATRIX");
+    printf("enter the size");
+    scanf("%d",&m);
+    for(i=0;i<m;i++)
+    {
+        printf("enter the coefficient");
+        scanf("%d",&p2[i].coef);
+        printf("enter the expoenetial");
+        scanf("%d",&p2[i].expo);
+    }
+    i=0;
+    j=0;
+    while(i<m && j<n)
+    {
+        if(p1[i].expo==p2[i].expo)
+        {
+            p3[k].coef=p1[i].coef+p2[j].coef;
+            p3[k].expo=p1[i].expo;
+            k++;
+            i++;
+            j++;
+        }
+        else if(p1[i].expo>p2[i].expo)
+        {
+            p3[k].coef=p1[i].coef;
+            p3[k].expo=p1[i].expo;
+            k++;
+            i++;
+        }
+        else
+        {
+            p3[k].coef=p2[j].coef;
+            p3[k].expo=p2[j].expo;
+            k++;
+            j++;
+        }
+    }
+    while(i<n)
+    {
+        p3[k].coef=p1[i].coef;
+            p3[k].expo=p1[i].expo;
+            k++;
+            i++;
+        
+    }
+    
+    while(j<m)
+    {
+     p3[k].coef=p2[j].coef;
+            p3[k].expo=p2[j].expo;
+            k++;
+            j++;   
+    }
+    for(i=0;i<k;i++)
+    {
+        printf("%dx^%d ",p3[i].coef,p3[i].expo);
+        printf("+");
+    }
+    printf("0");
+}

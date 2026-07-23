@@ -1,0 +1,119 @@
+import java.io.*;
+
+
+class demo
+{
+    public static void main(String[] args)
+    {
+        P q= new P();
+        E w = new E();
+        my r = new my(q);
+        my1 r1 = new my1(w);
+        r.start();
+        r1.start();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class P
+{
+int i,j;
+int flag;
+    void prime()
+    {
+        int n= 100;
+        for(i=2;i<=n;i++)
+        {  int flag =1;
+            for(j=2;j<i;j++)
+            {
+                if(i%j==0)
+                {
+                    flag=0;
+                    break;
+                }
+            }
+            
+        
+        if( flag==1)
+        {
+            System.out.println(i);
+        }
+}
+    
+    try
+    {
+        Thread.sleep(100);
+        
+    }
+    catch(Exception e)
+    {
+                System.out.println(e);
+    }
+}
+}
+class E
+{
+    void even()
+    {
+        for(int i =1;i<=100;i++)
+        {
+            if(i%2==0)
+            {
+      System.out.println("even is "+i);
+
+            }
+        }try
+    {
+        Thread.sleep(100);
+        
+    }
+    catch(Exception e)
+    {
+                System.out.println(e);
+    }
+    }
+}
+    class my extends Thread
+    {
+        P p;
+        my(P p)
+        {
+            this.p=p;
+        }
+    public  void run()
+    {
+        p.prime();
+    }
+    }
+        class my1 extends Thread
+    {
+        E p1;
+        my1(E p1)
+        {
+            this.p1=p1;
+        }
+    public  void run()
+    {
+        p1.even();
+    }
+    }
+
+    
+    
+    
+    
+    
+    

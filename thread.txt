@@ -1,0 +1,58 @@
+import java.util.*;
+import java.io.*;
+class demo
+{
+    public static void main(String[] args)
+    {
+        apple q = new apple();
+        rose r = new rose(q);
+                rose1 r1 = new rose1(q);
+r.start();
+r1.start();
+    }
+}
+
+
+
+class apple
+{
+ public  void orange(int n)
+    {
+        synchronized(this)
+        {
+        for(int i=1;i<n;i++)
+        {
+            System.out.println(n*i);
+  try  {
+        Thread.sleep(100);
+}
+catch(Exception e)
+{
+    System.out.println(e);
+}
+}}
+}}
+class rose extends Thread
+{
+    apple a;
+   public rose(apple a)
+    {
+        this.a=a;
+    }
+  public  void run()
+    {
+        a.orange(5);
+    }
+}
+class rose1 extends Thread
+{
+    apple a;
+   public rose1(apple a)
+    {
+        this. a=a;
+    }
+  public  void run()
+    {
+        a.orange(5);
+    }
+}
